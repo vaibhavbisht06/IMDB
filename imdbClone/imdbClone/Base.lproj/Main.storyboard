@@ -43,10 +43,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="py2-jM-6Dg" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="1nS-Fx-Liw"/>
-                            <constraint firstItem="py2-jM-6Dg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Frn-hk-KoA"/>
-                            <constraint firstItem="py2-jM-6Dg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="M11-hl-nCE"/>
-                            <constraint firstItem="py2-jM-6Dg" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="SMm-gS-9hi"/>
+                            <constraint firstItem="py2-jM-6Dg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Hzd-s7-5Sb"/>
+                            <constraint firstItem="py2-jM-6Dg" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="KWx-OD-BB3"/>
+                            <constraint firstItem="py2-jM-6Dg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="sid-Ka-283"/>
+                            <constraint firstItem="py2-jM-6Dg" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="xpv-Lw-dYh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

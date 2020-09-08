@@ -40,17 +40,24 @@ extension HomeScreen: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         return products.count
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        let inset:CGFloat = 20
-//        return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+  
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let padding: CGFloat = 25
+//        let collectionCellSize = collectionView.frame.size.width - padding
+//        return CGSize(width: collectionCellSize/2, height: 300)
 //    }
-    
+//
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let padding: CGFloat = 15
-        let collectionCellSize = collectionView.frame.size.width - padding
-        return CGSize(width: collectionCellSize/2, height: 300)
-    }
+           let padding: CGFloat = 20
+           let collectionViewSize = collectionView.frame.size.width - padding
+           return CGSize(width: collectionViewSize/2, height: 300)
+       }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+          let inset:CGFloat = 15
+          return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+      }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: productCollectionViewCellId, for: indexPath) as! ProductCollectionViewCell
         let product = products[indexPath.row]

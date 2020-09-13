@@ -9,24 +9,34 @@
 import UIKit
 
 class HomeScreen : UIViewController {
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var products = [ProductDto]()
     let productCollectionViewCellId = "ProductCollectionViewCell"
+    var products = [ProductDto]()
+    var networkManager = NetworkManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        networkManager.delegate = self
+        contentLoad()
+    }
+    
+    func contentLoad(){
+        let apiURL = "http://www.omdbapi.com/?s=Batman&page=1&apikey=eeefc96f"
+        networkManager.performApiReq(urlString: apiURL)
         let nibCell = UINib(nibName: productCollectionViewCellId, bundle: nil)
-        collectionView.register(nibCell, forCellWithReuseIdentifier: productCollectionViewCellId)
-     
-        for _ in 1...17{
-            let product = ProductDto()
-            product?.Mname = "Vaibhav Bisht"
-            product?.Mtype = "Boy"
-            product?.Myear = "20"
-            products.append(product!)
-        }
-        collectionView.reloadData()
+           collectionView.register(nibCell, forCellWithReuseIdentifier: productCollectionViewCellId)
+        
+           for _ in 1...16{
+               let product = ProductDto()
+               product?.Mname = "Vaibhav Bisht"
+               product?.Mtype = "Boy"
+               product?.Myear = "20"
+               products.append(product!)
+           }
+           collectionView.reloadData()
     }
 }
 
@@ -41,13 +51,6 @@ extension HomeScreen: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     }
     
   
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let padding: CGFloat = 25
-//        let collectionCellSize = collectionView.frame.size.width - padding
-//        return CGSize(width: collectionCellSize/2, height: 300)
-//    }
-//
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
            let padding: CGFloat = 20
            let collectionViewSize = collectionView.frame.size.width - padding

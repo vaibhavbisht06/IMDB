@@ -9,5 +9,13 @@
 import Foundation
 
 struct ProductModel: Codable {
-    let Search : search
+    let Search : [search]
+}
+
+struct search: Codable {
+    let Title : String
+    let Year : String
+    let imdbID :String
+    let `Type` : String
+    let Poster :String
 }

@@ -32,8 +32,7 @@ struct NetworkManager {
                     return
                 }
                     if let safeData = data {
-                        let dataString = String(data: safeData, encoding: .utf8)
-                        if  let movies = self.parseJson(safeData){
+                        if let movies = self.parseJson(safeData) {
                             self.delegate?.didUpdateData(self, product: movies)
                         }
                     }

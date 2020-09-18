@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol  NetworkManagerDelegate {
-    func didUpdateData(_ networkManager : NetworkManager,  product : ProductModel)
+    func didUpdateData(_ networkManager : NetworkManager,  product : ProductDto)
     func didfail(error : Error)
 }
 
@@ -31,23 +31,27 @@ struct NetworkManager {
                     self.delegate?.didfail(error: error!)
                     return
                 }
-                    if let safeData = data {
-                        if let movies = self.parseJson(safeData) {
-                            self.delegate?.didUpdateData(self, product: movies)
-                        }
+                if let safeData = data {
+                    if let movies = self.parseJson(safeData) {
+                        self.delegate?.didUpdateData(self, product: movies)
                     }
+                }
                 
             }
             task.resume()
         }
     }
     
-    func parseJson(_ productDto: Data) ->ProductModel{
+    func parseJson(_ productDto: Data) ->ProductDto?{
         let decoder = JSONDecoder()
         do {
-            let decodableData = try decoder.decode(ProductDto.self, from: productDto)
+            let decodableData = try decoder.decode(ProductModel.self, from: productDto)
+            let movies = ProductDto(Search: decodableData.Search)
+            
+            return movies
         } catch {
             delegate?.didfail(error: error)
+            return nil
         }
     }
 }

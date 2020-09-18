@@ -8,7 +8,9 @@
 
 import UIKit
 
-class HomeScreen : UIViewController {
+class HomeScreen : UIViewController, NetworkManagerDelegate {
+
+    
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -19,7 +21,7 @@ class HomeScreen : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        networkManager.delegate = self
+        networkManager.delegate = self
         contentLoad()
     }
     
@@ -29,14 +31,25 @@ class HomeScreen : UIViewController {
         let nibCell = UINib(nibName: productCollectionViewCellId, bundle: nil)
            collectionView.register(nibCell, forCellWithReuseIdentifier: productCollectionViewCellId)
         
-           for _ in 1...16{
-               let product = ProductDto()
-               product?.Mname = "Vaibhav Bisht"
-               product?.Mtype = "Boy"
-               product?.Myear = "20"
-               products.append(product!)
-           }
+//           for _ in 1...16{
+//               let product = ProductDto()
+//               product?.Mname = "Vaibhav Bisht"
+//               product?.Mtype = "Boy"
+//               product?.Myear = "20"
+//               products.append(product!)
+//           }
            collectionView.reloadData()
+    }
+    
+    func didUpdateData(_ networkManager: NetworkManager, product: ProductDto) {
+        print("Data Recived")
+        for data in product.Search{
+            print(data.Title)
+        }
+    }
+    
+    func didfail(error: Error) {
+        print("Error")
     }
 }
 
@@ -65,15 +78,15 @@ extension HomeScreen: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: productCollectionViewCellId, for: indexPath) as! ProductCollectionViewCell
         let product = products[indexPath.row]
         cell.Image.image = UIImage(named: "abc")
-        cell.Title.text = product.Mname!
-        cell.type.text = product.Mtype!
-        cell.year.text = product.Myear!
+//        cell.Title.text = product.Mname!
+//        cell.type.text = product.Mtype!
+//        cell.year.text = product.Myear!
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let product = products[indexPath.row]
-        print("\(indexPath.row) - \(product.Mname!)")
+//        print("\(indexPath.row) - \(product.Mname!)")
     }
 }

@@ -8,10 +8,6 @@
 
 import Foundation
 
-class ProductDto {
-    var Mname : String?
-    var Mtype : String?
-    var Myear : String?
-    
-    required init?() {}
+struct ProductDto {
+    let Search : [search]
 }
